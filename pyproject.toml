@@ -1,0 +1,42 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "agent365-kit"
+version = "0.1.0"
+description = "Governance-first blueprints, MCP allowlists, and OTel templates for Microsoft Agent 365."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Zen Chan" }]
+keywords = ["agent365", "microsoft", "mcp", "governance", "otel", "agentic-ai"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+  "typer>=0.12",
+  "rich>=13.7",
+  "jinja2>=3.1",
+]
+
+[project.scripts]
+a365kit = "a365kit_cli.main:app"
+
+[project.urls]
+Homepage = "https://github.com/MSFT-zc/agent365-governance-kit"
+Issues   = "https://github.com/MSFT-zc/agent365-governance-kit/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/a365kit_cli"]
+
+[tool.hatch.build]
+include = [
+  "src/a365kit_cli/**",
+  ".a365kit/templates/**",
+]
